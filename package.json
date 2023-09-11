@@ -2,25 +2,47 @@
   "name": "test-app",
   "version": "1.0.0",
   "description": "An app used to test naming changes to repos and organizations",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
-  },
   "author": "Robert Root",
   "license": "MIT",
+  "main": "main.js",
+  "repository": "https://github.com//Electron-Testing/test-electron-app.git",
+  "build": {
+    "appId": "gov.ornl.amo",
+    "copyright": "Copyright 2021 ORNL. All rights reserved.",
+    "productName": "TestApp",
+    "directories": {
+      "output": "../output/testApp/"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "hardenedRuntime": true,
+      "entitlements": "entitlements.mac.inherit.plist",
+      "entitlementsInherit": "entitlements.mac.inherit.plist",
+      "gatekeeperAssess": false
+    }
+  },
+
+  "scripts": {
+    "electron": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
   "devDependencies": {
-    "@electron-forge/cli": "^6.4.1",
-    "@electron-forge/maker-deb": "^6.4.1",
-    "@electron-forge/maker-rpm": "^6.4.1",
-    "@electron-forge/maker-squirrel": "^6.4.1",
-    "@electron-forge/maker-zip": "^6.4.1",
-    "@electron-forge/plugin-auto-unpack-natives": "^6.4.1",
-    "electron": "^26.2.0"
+    "electron": "^26.2.0",
+    "electron-builder": "^24.6.4"
   },
   "dependencies": {
+    "electron-log": "^4.4.8",
     "electron-squirrel-startup": "^1.0.0",
-    "electron-log": "^4.4.8"
+    "electron-updater": "6.1.4"
   }
 }
