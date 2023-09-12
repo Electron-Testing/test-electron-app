@@ -2,13 +2,12 @@
   "name": "test-app",
   "version": "1.0.0",
   "description": "An app used to test naming changes to repos and organizations",
-  "author": "Robert Root",
-  "license": "MIT",
   "main": "main.js",
   "repository": "https://github.com//Electron-Testing/test-electron-app.git",
   "build": {
     "appId": "gov.ornl.amo",
     "copyright": "Copyright 2021 ORNL. All rights reserved.",
+    "win": { "publish": { "provider": "generic", "url": "localhost"} },
     "productName": "TestApp",
     "directories": {
       "output": "../output/testApp/"
@@ -27,7 +26,8 @@
       "hardenedRuntime": true,
       "entitlements": "entitlements.mac.inherit.plist",
       "entitlementsInherit": "entitlements.mac.inherit.plist",
-      "gatekeeperAssess": false
+      "gatekeeperAssess": false,
+      "publish": { "provider": "generic", "url": "localhost"}
     }
   },
 
@@ -36,6 +36,8 @@
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
+  "author": "Robert Root",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^26.2.0",
     "electron-builder": "^24.6.4"
